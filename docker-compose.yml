@@ -1,0 +1,6 @@
+version: '3'
+services:
+  manutencao:
+    build: .
+    ports:
+      - 80:80
