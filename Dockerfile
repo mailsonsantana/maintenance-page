@@ -6,4 +6,8 @@ WORKDIR /var/www/html
 
 RUN chown -R www-data:www-data *
 
+RUN find ./ -type d -exec chmod 2755 {} \;
+
+RUN find ./ -type f -exec chmod 0644 {} \;
+
 CMD ["/usr/sbin/apachectl", "-D", "FOREGROUND"]
