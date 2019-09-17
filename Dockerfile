@@ -10,4 +10,6 @@ RUN find ./ -type d -exec chmod 2755 {} \;
 
 RUN find ./ -type f -exec chmod 0644 {} \;
 
+ECHO "ServerName localhost"
+
 CMD ["/usr/sbin/apachectl", "-D", "FOREGROUND"]
