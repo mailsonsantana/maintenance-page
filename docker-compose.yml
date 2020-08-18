@@ -1,6 +1,14 @@
 version: '3'
 services:
-  maintenance-page:
-    build: .
-    ports:
-      - 80:80
+  web:
+    image: maintenance-page/latest
+    container_name: maintenance-page
+    restart: always
+    environment:
+      - VIRTUAL_HOST=manutencao.flubber.com
+networks:
+  default:
+    external:
+      name: nginxproxy_default
+
+
