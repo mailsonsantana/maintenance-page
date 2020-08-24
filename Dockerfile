@@ -46,4 +46,4 @@ USER apache
 EXPOSE 80
 
 # TODO: Set the default CMD for the image
-CMD ["/usr/sbin/httpd -D FOREGROUND"]
+CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
