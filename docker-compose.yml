@@ -1,8 +1,11 @@
-version: '3'
+version: '2.2'
 services:
   web:
-    image: maintenance-page/latest
+    image: maintenance-page:v2
     container_name: maintenance-page
+    cpus: 0.1
+    mem_limit: 150m
+    mem_reservation: 100m
     restart: always
     environment:
       - VIRTUAL_HOST=manutencao.flubber.com
