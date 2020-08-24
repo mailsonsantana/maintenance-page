@@ -1,7 +1,7 @@
 version: '2.2'
 services:
   web:
-    image: maintenance-page:v2
+    image: maintenance-page:latest
     container_name: maintenance-page
     cpus: 0.1
     mem_limit: 150m
