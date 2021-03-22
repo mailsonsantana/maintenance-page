@@ -38,6 +38,7 @@ RUN echo "TraceEnable Off" >> /etc/httpd/conf.d/optional.conf
 RUN sed -i 's/\/var\/www\/html/\/opt\/app-root\/src/g' /etc/httpd/conf/httpd.conf
 RUN sed -i 's/logs\/error_log/\/dev\/stderr/g' /etc/httpd/conf/httpd.conf
 RUN sed -i 's/logs\/access_log/\/dev\/stdout/g' /etc/httpd/conf/httpd.conf
+RUN sed -i 's/Indexes//g' /etc/httpd/conf/httpd.conf
 RUN rm -f /etc/httpd/conf.d/welcome.conf
 # This default user is created in the openshift/base-centos7 image
 USER apache
