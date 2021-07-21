@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: manutencao
+data:
+  CAPTCHA: 5afgh54a8a464df
+  URL: https://api-manutencao.com.br

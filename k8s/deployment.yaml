@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: manutencao
+  name: manutencao
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: manutencao
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: manutencao
+    spec:
+      containers:
+      - image: maintenance-page
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+            scheme: HTTP
+          initialDelaySeconds: 30
+          timeoutSeconds: 15
+        imagePullPolicy: IfNotPresent
+        name: manutencao
+        ports:
+        - containerPort: 80
+        envFrom:
+          - secretRef:
+              name: manutencao
+          - configMapRef:
+              name: manutencao
+        volumeMounts:
+        - name: dados
+          mountPath: /manutencao
+        resources:
+      volumes:
+      - name: dados
+        persistentVolumeClaim:
+          claimName: pvc0001
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      serviceAccount: manutencao
+
